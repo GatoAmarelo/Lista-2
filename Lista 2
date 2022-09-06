@@ -13,35 +13,40 @@ setlocale(LC_ALL, "portuguese");
 	int n, i;
 	int soma;
 	soma = 0;
-	
+	// lendo o tamanho do vetor
 	printf("Digite o tamanho do vetor : \n");
 	scanf("%d", &n);
+	// lendo os valores do vetor
 	printf("Digite os valores do vetor : \n");
 	
+	// alocando o vetor dinamicamente
 	int *vet = malloc(n*sizeof(int));
+	// verificando se tem erro  na alocacao da memoria
 	if(vet==NULL){
 		printf("Erro na alocação de memória");
 		exit(1);
 	}
+	// lendo o vetor
 	for(i=0;i<n;i++){
 		scanf("%d", &vet[i]);
 	}	
-	
+	// calculo da soma dos valores
 	for(i=0;i<n;i++){
 		soma = soma + vet[i];	
 	}
-	
+	// imprimindo os valores 
 	for(i=0;i<n;i++){
 		printf("valor[%d] = %d \n", i,vet[i]);
 
 	}
-	
+	// achando o maior valor dentro do vetor
 	int maior;
 	maior = vet[0];
 	for(i=0;i<n;i++){
 		if(vet[i] > maior)
 			maior = vet[i];
 	}
+	// achando o menor valor dentro do vetor
 	int menor;
 	menor = vet[0];
 	for(i=0;i<n;i++){
@@ -49,12 +54,12 @@ setlocale(LC_ALL, "portuguese");
 			menor = vet[i];
 	}
 		
-	
+	// imprimindo os resultados
 	printf("Soma dos valores : %d \n", soma);
 	printf("O maior elemento do vetor é %d \n", maior);
     printf("O menor elemento do vetor é %d", menor);
 	
-	
+	// liberando o vetor
 	free(vet);
 	
 	
@@ -76,10 +81,10 @@ setlocale(LC_ALL, "portuguese");
 	
 
     int cont, quant;
-	
+	// ler a quantidade de alunos
 	printf("Digite a quantidade de alunos : \n");
 	scanf("%d", &quant);
-     
+     // criando um laco para contar a quantiade de alunos que o usuario digitar
     for(cont=0;cont<quant;cont++){
     	
     int n, i;
@@ -87,32 +92,35 @@ setlocale(LC_ALL, "portuguese");
 	soma = 0;
 	float media;
 	
-		
+	// lendo a quantidade de notas	
 	printf("Digite a quantidade de notas do aluno %d : \n", cont);
 	scanf("%d", &n);
 	printf("Digite as notas : \n");
-	
+	// alocando o vetor de notas
 	float *vet_notas = malloc(n*sizeof(float));
+	// verificando se existe algum erro na alocacao da memoria
 	if(vet_notas==NULL){
 		printf("Erro na alocação de memória");
 		exit(1);
 	}
+	// lendo os valores das notas
 	for(i=0;i<n;i++){
 		scanf("%f", &vet_notas[i]);
 	}	
 	
-	
+	// somando as notas e fazendo o calculo da media
 	for(i=0;i<n;i++){
 		soma = soma + vet_notas[i];
         media = soma/n;
 	}
-	
+	// imprimindo as notas
 	for(i=0;i<n;i++){
 		printf("nota[%d] = %.1f \n", i,vet_notas[i]);
 
 	}
-	
+	// imprimindo a media
   	    printf("A media é %.1f \n", media);
+        // liberando o vetor
 	    free(vet_notas);
 
 	}
@@ -131,19 +139,21 @@ setlocale(LC_ALL, "portuguese");
 #include<stdlib.h>
 #include<locale.h>
 
-
+// usando uma funcao para as condissoes que foram dadas
 void preenche_ordenado(int n, int *v) {
 	
 	int i, j, a;	
+	// lendo a quantidade de valores
 	printf("Digite a quantidade de elementos \n");
 	scanf("%d", &n);
 	printf("Digite os valores : \n");
-	
+	// alocando o vetor v
 	v = malloc(n*sizeof(int));
+	// lendo os valores do vetor
 	for(i=0;i<n;i++){
 		scanf("%d", &v[i]);
 	}
-	
+	// usando for para ordenar os valores
     for (i=0;i<n-1;i++) {
         for (j=i+1;j<n;j++) {
             if (v[i] > v[j]) {
@@ -153,11 +163,11 @@ void preenche_ordenado(int n, int *v) {
             }
         }
     }
-	
+	// imprimindo os valores ordenados
 	for(i=0;i<n;i++){
 		printf("%d ", v[i]);
 	}
-	
+	// liberando o vetor
 	free(v);
 	
 }
@@ -166,7 +176,7 @@ int main(){
 setlocale(LC_ALL, "portuguese");
 
 int n,v;
-
+// chamando a funcao no int main
 preenche_ordenado(n,&v);
 	
 	
@@ -200,23 +210,24 @@ preenche_ordenado(n,&v);
 int main(){
 	int i;
 	int n;
-    
+        // perguntando a quantiade de valores
 	printf("Quantos valores deseja armazenar ? \n");
 	scanf("%d", &n);
-
+        // alocando o vetor 
 	double *vet;
 	vet = malloc (n*sizeof(double*));
-	       
+	      // if usado para saber que o tamanho do vetor deve ser maior ou igual a 10
 	      if (n >= 10){
 	      for(i=0;i<n;i++){
 			  printf("Numero ");
 			  scanf("%lf", &vet[i]);
 		  }	
-		  
+		  // usando rand() para alocar os 10 primeiros numeros com valores de 0 a 100 aleatoriamente
 		   for(i=0; i<10; i++)
     {
         vet[i] = rand() % 100;
     }
+        // imprimindo o resultado
 	printf("Numeros lidos : \n");
 	for(i=0;i<n;i++){
 		printf("%.0lf", vet[i]);
